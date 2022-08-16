@@ -1,0 +1,21 @@
+public class GCDHCF {
+
+	
+	static int gcd(int a,int b) {
+		if(a==b) return a;
+		
+		if(a<b) return gcd(b,a);
+		
+		return gcd(a-b,b);
+	}
+  
+  
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.out.println(gcd(12,36));
+		
+
+	}
+
+}
