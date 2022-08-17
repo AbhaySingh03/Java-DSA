@@ -1,0 +1,74 @@
+package BinaryTree;
+
+import java.util.Scanner;
+
+public class BinaryTree {
+	Scanner sc;
+	Node root;
+	
+	public BinaryTree() {
+		sc = new Scanner(System.in);
+	}
+	/**
+	 * @return
+	 */
+	Node createBinaryTree() {
+		System.out.println("Enter the root");
+		//Scanner sc = new Scanner(System.in);
+		int data = sc.nextInt();
+		if(data == -1 ) return null;
+		Node node = new Node(data);
+		
+		System.out.println("Enter " +data+ "'s Left data");
+		node.left = createBinaryTree();
+		System.out.println("Enter " +data+ "'s Right data");
+		node.right= createBinaryTree();
+		
+		return node;
+	}
+	void  inOrderTraversal(Node root) {
+		if(root == null) return;
+		
+		inOrderTraversal(root.left);                                                                  
+		System.out.println(root.data);
+		inOrderTraversal(root.right);
+	}
+	
+	void  postorder(Node root) {
+		if(root == null) return;
+		
+		inOrderTraversal(root.left);
+		inOrderTraversal(root.right);
+		System.out.println(root.data);
+	}
+	void  preorder(Node root) {
+		if(root == null) return;
+		System.out.println(root.data);
+		inOrderTraversal(root.left);
+		inOrderTraversal(root.right);
+		
+	}
+	int height(Node root) {
+		if(root == null) return 0;
+	return((Math.max(height(root.left), height(root.right)))+1);
+	}
+	
+	void printNodesAtKDistance(Node root, int k) {
+		if(root == null) return;
+		if(k == 0) {
+			System.out.println(root.data);
+			return;
+		}
+		
+		printNodesAtKDistance(root.left, k-1);
+		printNodesAtKDistance(root.right, k-1);
+	}
+}
+ class Node{
+	int data;
+	Node left , right;
+	
+	 Node(int data) {
+		this.data = data;
+	}
+}
