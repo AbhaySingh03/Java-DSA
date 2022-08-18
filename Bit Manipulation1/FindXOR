@@ -1,0 +1,22 @@
+package BitManipulation;
+
+public class FindXOR {
+	static int findxor(int n) {
+		int uni = n;
+		while(n>0) {
+			n=n-1;
+			uni = uni ^n; 
+			
+		}
+		return uni;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int n = 7;
+		int a = findxor(n);
+		System.out.println(a);
+	}
+
+}
