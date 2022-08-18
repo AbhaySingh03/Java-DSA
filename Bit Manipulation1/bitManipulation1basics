@@ -1,0 +1,58 @@
+package BitManipulation;
+
+public class BitwiseBasics {
+	static int countsetbitoptimized(int n) {
+		int cnt = 0;
+		while(n>0) {
+			cnt++;
+			n = n &(n-1);
+		}
+		return cnt;
+	}
+	static int countsetbit(int n) {
+		int cnt = 0;
+		while(n>0) {
+			if((n & 1) == 1) {
+				cnt++;
+			}
+		//	n>>=1;
+			n = n  >> 1;
+		}
+		return cnt;
+	}
+	static boolean poweroftwo(int n) {
+	 int res = n & (n-1);
+//	 if(res == 0) {
+//		 return true;
+//	 }
+//	 return false;
+	 return res == 0 ? true:false;
+	}
+
+	static int findtheithbit(int n,int i) {
+		if(i<0 || i>n) {
+			return -1;
+		}
+		int mask = 1<<i;
+		int result = n & mask;
+
+		return result == 0 ? 0 : 1;
+	}
+	static int togglethebit(int n , int i) {
+		int mask = 1<<i;
+		return n^mask;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int n = 491;
+		int i = 1;
+		System.out.println("111101011");
+		System.out.println(findtheithbit(n,i));
+		System.out.println(togglethebit(n,i));
+		System.out.println(poweroftwo(n));
+		System.out.println(countsetbit(n));
+		System.out.println(countsetbitoptimized(n));
+	}
+
+}
