@@ -1,0 +1,47 @@
+package BitManipulation;
+
+public class Bitwise2 {
+
+	static int repeat(int[] a) {
+		int ans = 0;
+		for(int e : a) {
+			ans ^= e;
+		}
+		return ans;
+	}
+	public static int[] repeattwo(int[] a) {
+       int xor = 0;
+		
+		for(int e: a) {
+			xor = xor ^ e;
+		}
+		int temp = xor;
+		int mask = xor & (~(xor-1));
+		
+		for(int e: a) {
+			if((mask & e) == 0) {
+				temp = temp ^ e;
+			}
+		}
+		
+		int firstNumber = temp;
+		int secondNumber = xor ^ firstNumber;
+		
+		int res[] = new int[2];
+		res[0] = firstNumber;
+		res[1] = secondNumber;
+		
+		return res;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int[] a = {2,1,3,4,4,3};
+		//System.out.println(repeat(a));
+		int res[] = repeattwo(a);
+		for(int e : res) {
+			System.out.println(e);
+		}
+	}
+
+}
